@@ -1,6 +1,18 @@
 def decrypt(encrypted_text, n):
-
-    pass
+    if encrypted_text == None or encrypted_text == '' or n <= 0:
+        return encrypted_text
+    str_len:int = len(encrypted_text)
+    half_str_len = str_len // 2
+    result: str = ''.ljust(str_len)
+    for j in range(n):
+        res_list = list(result)
+        for i in range(half_str_len):
+            res_list[i*2 + 1] = encrypted_text[i]
+        for i in range(str_len - str_len // 2):
+            res_list[i*2] = encrypted_text[half_str_len + i]
+        result = ''.join(res_list)
+        encrypted_text = result
+    return result
 
 
 def encrypt(text, n):
@@ -16,4 +28,5 @@ def encrypt(text, n):
         text = result
     return result
 
-print(encrypt('This is a test!', 4))
+print(encrypt('This is a test!', 2))
+print(decrypt(' Tah itse sits!', 3))
