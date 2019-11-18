@@ -4,13 +4,15 @@ def comp(array1, array2):
     if array1 == [] and array2 == []:
         return True
 
-    if len(array1) == 0 or len(array2) == 0:
-        return False
 
     if array1 == None and array2 == None:
         return True
     if array1 == None or array2 == None:
         return False
+
+    if len(array1) == 0 or len(array2) == 0:
+        return False
+        
     if not len(array1) == len(array2):
         return False
     
