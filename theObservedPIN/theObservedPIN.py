@@ -14,12 +14,16 @@ def get_pins(observed):
     tmp = 1
     for i in range(len(observed)):
         tmp *= len(dct[observed[i]])
-    res = [''] * tmp
-    for i in range(tmp):
-        tmp1 = ''
-        for j in range(len(observed)):
-            tmp1 = tmp1 + dct[observed[j]][i % len(dct[observed[j]])]
-        res[i] = tmp1
+    res = []
+    for i in range(len(dct[observed[0]])):
+        res.append(dct[observed[0]][i])
+
+    for i in range(1, len(observed)):
+        tmp = []
+        for j in range(len(dct[observed[i]])):
+            for k in range(len(res)):
+                tmp.append(res[k] + dct[observed[i]][j])
+        res = tmp
     return res
 
 if __name__ == '__main__':
